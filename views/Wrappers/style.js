@@ -40,4 +40,20 @@ export default StyleSheet.create({
     borderBottomRightRadius: 15,
     borderBottomLeftRadius: 15,
   },
+  price: {
+    display: 'flex',
+    flexDirection: 'row',
+    gap: 5,
+  },
+  action: {
+    marginLeft: 'auto',
+  },
+  'change-count': {
+    display: 'flex',
+    flexDirection: 'row',
+    gap: 5,
+    justifyContent: 'center',
+    marginTop: 5,
+    marginBottom: 5,
+  },
 });

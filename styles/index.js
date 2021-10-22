@@ -7,6 +7,7 @@ export default {
   greenBackground: '#ABFA7A',
   white: 'white',
   mainBackground: '#e7eda1',
+  black: 'black',
 
   fontSizeHeader: 24,
 

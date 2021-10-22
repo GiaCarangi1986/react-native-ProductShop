@@ -9,16 +9,17 @@ export default StyleSheet.create({
     color: styles.greenBackground,
     fontWeight: '600',
   },
-  action: {
-    marginLeft: 'auto',
-  },
   product_detail: {
     display: 'flex',
     justifyContent: 'center',
   },
-  price: {
-    display: 'flex',
-    flexDirection: 'row',
-    gap: 5,
+  btn: {
+    height: 25,
+    width: 25,
+    borderColor: styles.black,
+
+  },
+  btn_text: {
+    color: styles.black,
   }
 });

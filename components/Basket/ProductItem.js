@@ -1,9 +1,10 @@
 import React from "react";
-import { Text, CheckBox, View, Button } from 'react-native';
+import { Text, CheckBox } from 'react-native';
+import { Button } from 'react-native-elements';
 import Wrapper from "../../views/Wrappers";
 import style from "./style";
 
-const ProductItem = ({ title = '', cost = 0, unit = 'р', icon = 'Изменить кол-во', formik = {},
+const ProductItem = ({ title = '', cost = 0, unit = 'р', formik = {},
   topRadius = null, bottomRadius = null, id = -1 }) => {
   const handleChange = (e) => {
     const obj = formik.values[id]
@@ -18,20 +19,20 @@ const ProductItem = ({ title = '', cost = 0, unit = 'р', icon = 'Изменит
         value={formik.values[id]?.id}
         style={style.checkBox}
       />
-      <View>
+      <Wrapper>
         <Text>{title}</Text>
-        <View style={style.price}>
+        <Wrapper nameOfStyle='price'>
           <Text>{cost}</Text>
           <Text>{unit}</Text>
-        </View>
-      </View>
-      <View style={style.action}>
+        </Wrapper>
+      </Wrapper>
+      <Wrapper nameOfStyle='action'>
         <Text style={style.product_detail}>{formik.values[id]?.count}</Text>
-        <Text>{icon}</Text>
-        {/* <View>
-          <Button></Button>
-        </View> */}
-      </View>
+        <Wrapper nameOfStyle='change-count'>
+          <Button title='-' buttonStyle={style.btn} titleStyle={style.btn_text} type="outline" />
+          <Button title='+' buttonStyle={style.btn} titleStyle={style.btn_text} type="outline" />
+        </Wrapper>
+      </Wrapper>
     </Wrapper>
   )
 }
