@@ -4,63 +4,14 @@ import { ScrollView, Text } from 'react-native';
 import Wrapper from "../../views/Wrappers";
 import { ProductItem, TotalProductsInBasket } from ".";
 import style from "./style";
-import { EMPTY_BASKET } from "../../const";
+import { EMPTY_BASKET, PRODUCTS } from "../../const";
 
 const ProductsInBasket = () => {
   const [curPrice, setCurPrice] = useState(0)
   const [isAllChecked, setAllCheck] = useState(false)
   const [smthCheck, setSomeCheck] = useState(false)
-  const products = [
-    {
-      name: 'Грецкие орехи ыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыы',
-      price: {
-        cost: 1000,
-        unit: 'р'
-      },
-      id: 1,
-    },
-    {
-      name: 'продукт 2',
-      price: {
-        cost: 100,
-        unit: 'кг/р'
-      },
-      id: 2,
-    },
-    {
-      name: 'продукт 3',
-      price: {
-        cost: 200,
-        unit: 'кг/р'
-      },
-      id: 3,
-    },
-    {
-      name: 'продукт 4',
-      price: {
-        cost: 210,
-        unit: 'р'
-      },
-      id: 4,
-    },
-    {
-      name: 'продукт 5',
-      price: {
-        cost: 250,
-        unit: 'кг/р'
-      },
-      id: 5,
-    },
-    {
-      name: 'продукт 6',
-      price: {
-        cost: 50,
-        unit: 'р'
-      },
-      id: 6,
-    },
-  ]
-  const [items, setItems] = useState(products)
+
+  const [items, setItems] = useState(PRODUCTS)
 
   const onSubmit = (data) => {
     console.log(`data`, data)
@@ -159,6 +110,7 @@ const ProductsInBasket = () => {
               chooseAllCheck={chooseAllCheck}
               smthCheck={smthCheck}
               deleteProducts={deleteProducts}
+              onSubmit={onSubmit}
             />
           </Wrapper>
           <ScrollView style={style.scroll_height}>

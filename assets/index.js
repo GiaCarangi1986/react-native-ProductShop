@@ -1,4 +1,5 @@
 import pay_icon from './icons/pay_icon.svg'
+import pay_disabled_icon from './icons/pay_disabled_icon.svg'
 import back_icon from './icons/back_icon.svg'
 import home_icon from './icons/home_icon.svg'
 import delete_icon from './icons/delete_icon.svg'
@@ -10,6 +11,7 @@ import shop_icon from './icons/shop_icon.png'
 
 export {
   pay_icon,
+  pay_disabled_icon,
   back_icon,
   home_icon,
   delete_icon,
