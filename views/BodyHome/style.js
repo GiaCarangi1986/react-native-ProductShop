@@ -12,6 +12,7 @@ export default StyleSheet.create({
     width: '100%',
     marginTop: 10,
     marginBottom: 10,
+    gap: 10,
   },
   title: {
     color: styles.white,
@@ -24,12 +25,12 @@ export default StyleSheet.create({
     fontSize: styles.fontSizeHeader,
     borderRadius: 5,
     shadowColor: styles.black,
-    shadowOffset: { width: 0, height: 0 },
+    shadowOffset: { width: 0, height: 2.5 },
     shadowOpacity: 0.8,
     shadowRadius: 5,
   },
   image: {
-    width: '30%',
-    height: '30%',
+    width: 100,
+    height: 100,
   }
 });
