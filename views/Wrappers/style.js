@@ -11,7 +11,7 @@ export default StyleSheet.create({
   },
   'all-products': {
     width: '100%',
-    height: styles.screenHeight - 140,
+    height: '80%',
     paddingTop: 20,
     paddingRight: 10,
     paddingBottom: 20,
@@ -20,14 +20,15 @@ export default StyleSheet.create({
   'card-product': {
     display: 'flex',
     flexDirection: 'row',
-    height: 70,
+    minHeight: 70,
     width: '100%',
     backgroundColor: styles.white,
     padding: 10,
     alignItems: 'center',
+    justifyContent: 'space-between',
   },
-  'card-product:last-child': {
-    borderRadius: 15,
+  'total-price-container': {
+    height: 70,
   },
   'main-in-products': {
     marginBottom: 20,
@@ -40,13 +41,26 @@ export default StyleSheet.create({
     borderBottomRightRadius: 15,
     borderBottomLeftRadius: 15,
   },
-  price: {
+  'horizontal-container': {
     display: 'flex',
     flexDirection: 'row',
     gap: 5,
   },
-  action: {
+  'horizontal-container_product': {
+    display: 'flex',
+    flexDirection: 'row',
+    gap: 10,
+    alignItems: 'center',
+    width: '70%',
+  },
+  'total-price-width': {
+    width: 'min-content',
+  },
+  'pay-or-delete': {
     marginLeft: 'auto',
+    display: 'flex',
+    flexDirection: 'row',
+    gap: 5,
   },
   'change-count': {
     display: 'flex',
@@ -56,4 +70,12 @@ export default StyleSheet.create({
     marginTop: 5,
     marginBottom: 5,
   },
+  'check-product': {
+    width: '100%',
+  },
+  'empty-basket': {
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '100%',
+  }
 });

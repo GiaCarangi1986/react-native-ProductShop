@@ -8,8 +8,10 @@ export default {
   white: 'white',
   mainBackground: '#e7eda1',
   black: 'black',
+  red: 'red',
 
   fontSizeHeader: 24,
+  fornSizeIcon: 12,
 
   screenWidth,
   screenHeight

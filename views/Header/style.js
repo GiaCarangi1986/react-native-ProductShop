@@ -4,8 +4,9 @@ import styles from "../../styles"
 export default StyleSheet.create({
   container: {
     backgroundColor: styles.greenBackground,
-    height: 70,
-    borderRadius: 15,
+    height: '10%',
+    borderBottomEndRadius: 15,
+    borderBottomStartRadius: 15,
     display: "flex",
     alignSelf: 'flex-start',
     justifyContent: 'center',

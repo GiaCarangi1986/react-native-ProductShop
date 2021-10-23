@@ -1,12 +1,27 @@
 import React from "react";
+import { View } from 'react-native';
+import { Button } from "react-native-elements";
+import { back_icon, home_icon } from '../../assets'
+import Icon from '../Icon'
 import style from "./style";
-import { Text, View } from 'react-native';
-import { NAME_OF_SHOP } from "../../const";
 
 const Footer = () => {
   return (
     <View style={style.container}>
-      <Text style={style.title}>{NAME_OF_SHOP}</Text>
+      <Button
+        icon={
+          <Icon src={back_icon} type='icon_rigth' />
+        }
+        // buttonStyle={style.btn_icon}
+        type="clear"
+      />
+      <Button
+        icon={
+          <Icon src={home_icon} type='icon_rigth' />
+        }
+        // buttonStyle={style.btn_icon}
+        type="clear"
+      />
     </View>
   )
 }
