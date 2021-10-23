@@ -8,14 +8,13 @@ export default StyleSheet.create({
     alignItems: 'center',
     height: '100%',
     backgroundColor: styles.mainBackground,
+    padding: 10,
   },
   'all-products': {
     width: '100%',
     height: '80%',
     paddingTop: 20,
-    paddingRight: 10,
     paddingBottom: 20,
-    paddingLeft: 10,
   },
   'card-product': {
     display: 'flex',

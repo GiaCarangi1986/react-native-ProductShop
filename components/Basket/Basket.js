@@ -1,5 +1,4 @@
 import React from "react";
-import { StyleSheet, Text, View } from 'react-native';
 import Header from "../../views/Header";
 import Footer from "../../views/Footer";
 import { ProductsInBasket } from ".";

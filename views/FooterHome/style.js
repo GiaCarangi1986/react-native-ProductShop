@@ -7,7 +7,7 @@ export default StyleSheet.create({
     height: '10%',
     borderRadius: 15,
     display: "flex",
-    justifyContent: 'space-between',
+    justifyContent: 'flex-end',
     alignItems: 'center',
     width: '100%',
     marginTop: 'auto',
@@ -16,5 +16,13 @@ export default StyleSheet.create({
   },
   main_container: {
     justifyContent: 'flex-end',
-  }
+  },
+  btn_icon: {
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  btn_icon_text: {
+    fontSize: styles.fontSizeIcon,
+    color: styles.black,
+  },
 });

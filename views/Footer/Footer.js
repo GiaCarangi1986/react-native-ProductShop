@@ -10,16 +10,14 @@ const Footer = () => {
     <View style={style.container}>
       <Button
         icon={
-          <Icon src={back_icon} type='icon_rigth' />
+          <Icon src={back_icon} />
         }
-        // buttonStyle={style.btn_icon}
         type="clear"
       />
       <Button
         icon={
-          <Icon src={home_icon} type='icon_rigth' />
+          <Icon src={home_icon} />
         }
-        // buttonStyle={style.btn_icon}
         type="clear"
       />
     </View>

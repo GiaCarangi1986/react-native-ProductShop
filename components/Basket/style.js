@@ -27,11 +27,11 @@ export default StyleSheet.create({
     flexDirection: 'column',
   },
   btn_icon_text: {
-    fontSize: styles.fornSizeIcon,
+    fontSize: styles.fontSizeIcon,
     color: styles.black,
   },
   btn_icon_text_delete: {
-    fontSize: styles.fornSizeIcon,
+    fontSize: styles.fontSizeIcon,
     color: styles.red,
   },
   scroll_height: {

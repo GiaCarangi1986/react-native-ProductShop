@@ -9,9 +9,12 @@ export default {
   mainBackground: '#e7eda1',
   black: 'black',
   red: 'red',
+  transparent: 'transparent',
 
   fontSizeHeader: 24,
-  fornSizeIcon: 12,
+  fontSizeHeaderHome: 36,
+  fontSizeIcon: 12,
+
 
   screenWidth,
   screenHeight
