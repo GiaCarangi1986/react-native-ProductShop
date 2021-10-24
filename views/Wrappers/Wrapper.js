@@ -2,7 +2,7 @@ import React from "react";
 import style from "./style";
 import { View } from 'react-native';
 
-const Wrapper = ({ children = {}, nameOfStyle = null, topRadius = null, bottomRadius = null, otherStyle = null }) => {
+const Wrapper = ({ children = {}, nameOfStyle = null, topRadius = null, bottomRadius = null, otherStyle = null, no_margin = null }) => {
   const stylesArr = []
   if (nameOfStyle) {
     stylesArr.push(style[`${nameOfStyle}`])
@@ -15,6 +15,9 @@ const Wrapper = ({ children = {}, nameOfStyle = null, topRadius = null, bottomRa
   }
   if (otherStyle) {
     stylesArr.push(style[`${otherStyle}`])
+  }
+  if (no_margin) {
+    stylesArr.push(style['card-product_list-products_special'])
   }
 
   return (

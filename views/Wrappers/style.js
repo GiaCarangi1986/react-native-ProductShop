@@ -26,6 +26,13 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
   },
+  'card-product_list-products': {
+    borderRadius: 15,
+    marginTop: 10,
+  },
+  'card-product_list-products_special': {
+    marginTop: 0,
+  },
   'total-price-container': {
     height: 70,
   },
@@ -51,6 +58,9 @@ export default StyleSheet.create({
     gap: 10,
     alignItems: 'center',
     width: '70%',
+  },
+  'horizontal-container_list-products': {
+    width: '65%'
   },
   'total-price-width': {
     width: 'min-content',
@@ -81,5 +91,6 @@ export default StyleSheet.create({
     display: 'flex',
     justifyContent: 'space-between',
     flexDirection: 'row',
+    marginBottom: 10,
   }
 });

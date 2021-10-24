@@ -10,6 +10,7 @@ import search_icon from './icons/search_icon.svg'
 import search_disabled_icon from './icons/search_disabled_icon.svg'
 import search_delete_icon from './icons/search_delete_icon.svg'
 import filter_icon from './icons/filter_icon.svg'
+import add_to_basket_icon from './icons/add_to_basket_icon.svg'
 
 import shop_icon from './icons/shop_icon.png'
 
@@ -26,6 +27,7 @@ export {
   search_disabled_icon,
   search_delete_icon,
   filter_icon,
+  add_to_basket_icon,
 
   shop_icon,
 }

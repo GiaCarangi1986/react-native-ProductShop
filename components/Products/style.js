@@ -25,5 +25,27 @@ export default StyleSheet.create({
   auto_height: {
     marginTop: 'auto',
     marginBottom: 'auto',
-  }
+  },
+  scroll_height: {
+    height: 0,
+  },
+  'product_title': {
+    fontWeight: '600',
+  },
+  product_detail: {
+    display: 'flex',
+    justifyContent: 'center',
+  },
+  btn: {
+    height: 25,
+    width: 25,
+    borderColor: styles.black,
+
+  },
+  btn_text: {
+    color: styles.black,
+  },
+  no_padding: {
+    padding: 0,
+  },
 });

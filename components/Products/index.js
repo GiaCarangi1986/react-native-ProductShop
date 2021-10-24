@@ -1,6 +1,6 @@
 import Products from './Products'
 import ContentProductsList from './ContentProductsList'
-import ProductList from './ProductList'
+import ProductItem from './ProductItem'
 import SettingList from './SettingList'
 
 export default Products
@@ -8,5 +8,5 @@ export default Products
 export {
   ContentProductsList,
   SettingList,
-  ProductList,
+  ProductItem,
 }

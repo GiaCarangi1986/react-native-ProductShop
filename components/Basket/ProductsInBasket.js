@@ -5,6 +5,7 @@ import Wrapper from "../../views/Wrappers";
 import { ProductItem, TotalProductsInBasket } from ".";
 import style from "./style";
 import { EMPTY_BASKET, PRODUCTS } from "../../const";
+import { initValues } from "../../utils/utils";
 
 const ProductsInBasket = () => {
   const [curPrice, setCurPrice] = useState(0)
@@ -21,21 +22,6 @@ const ProductsInBasket = () => {
     initialValues: {},
     onSubmit
   })
-
-  const initValues = (val = null) => {
-    let newVals = {}
-    val.map((elem) => {
-      newVals = {
-        ...newVals,
-        [elem.id]: {
-          id: false,
-          count: 1,
-        }
-      }
-      return newVals
-    })
-    formik.setValues(newVals)
-  }
 
   const chooseAllCheck = e => {
     setAllCheck(e)
@@ -66,7 +52,7 @@ const ProductsInBasket = () => {
       }
     })
     setItems(newItems)
-    initValues(newItems)
+    formik.setValues(initValues(newItems))
   }
 
   useEffect(() => {
@@ -96,7 +82,7 @@ const ProductsInBasket = () => {
   }, [formik])
 
   useEffect(() => {
-    initValues(items)
+    formik.setValues(initValues(items))
   }, [])
 
   return (
