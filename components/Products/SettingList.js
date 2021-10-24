@@ -8,22 +8,25 @@ import { search_icon, search_delete_icon, filter_icon } from "../../assets";
 import { ASCENDING, DESCENDING } from '../../const'
 import style from "./style";
 
-const SettingList = () => {
+const SettingList = ({ getOrderingProducts = () => { }, getSearchProducts = () => { } }) => {
   const [orderText, setOrderText] = useState(DESCENDING.text)
   const [orderIcon, setOrderIcon] = useState(DESCENDING.name)
 
   const changeOrder = () => {
     if (orderText === ASCENDING.text) {
+      getOrderingProducts(DESCENDING.name)
       setOrderIcon(DESCENDING.name)
       setOrderText(DESCENDING.text)
     }
     else {
+      getOrderingProducts(ASCENDING.name)
       setOrderIcon(ASCENDING.name)
       setOrderText(ASCENDING.text)
     }
   }
 
   const onSubmit = (data) => {
+    getSearchProducts(formik.values.search)
     console.log(`data`, data)
   }
 
