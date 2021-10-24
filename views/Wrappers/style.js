@@ -76,5 +76,10 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     height: '100%',
+  },
+  settings_products: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    flexDirection: 'row',
   }
 });

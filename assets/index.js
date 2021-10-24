@@ -6,6 +6,10 @@ import delete_icon from './icons/delete_icon.svg'
 import avatar_icon from './icons/avatar_icon.svg'
 import catalog_icon from './icons/catalog_icon.svg'
 import basket_icon from './icons/basket_icon.svg'
+import search_icon from './icons/search_icon.svg'
+import search_disabled_icon from './icons/search_disabled_icon.svg'
+import search_delete_icon from './icons/search_delete_icon.svg'
+import filter_icon from './icons/filter_icon.svg'
 
 import shop_icon from './icons/shop_icon.png'
 
@@ -18,6 +22,10 @@ export {
   avatar_icon,
   catalog_icon,
   basket_icon,
+  search_icon,
+  search_disabled_icon,
+  search_delete_icon,
+  filter_icon,
 
   shop_icon,
 }

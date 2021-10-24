@@ -6,6 +6,20 @@ export const USER_NAME = 'Софья Х.'
 export const CATALOG = 'Каталог'
 export const BASKET = 'Корзина'
 export const SLOGAN = 'Мы - то, что мы едим'
+
+export const SEARCH = {
+  text: 'Поиск...',
+  name: 'search'
+}
+export const ASCENDING = {
+  text: 'По возрастанию',
+  name: 'ascending',
+}
+export const DESCENDING = {
+  text: 'По убыванию',
+  name: 'descending',
+}
+
 export const PRODUCTS = [
   {
     name: 'Грецкие орехи ыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыы',
