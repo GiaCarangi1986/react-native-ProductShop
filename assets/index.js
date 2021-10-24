@@ -12,7 +12,8 @@ import search_delete_icon from './icons/search_delete_icon.svg'
 import filter_icon from './icons/filter_icon.svg'
 import add_to_basket_icon from './icons/add_to_basket_icon.svg'
 
-import shop_icon from './icons/shop_icon.png'
+import shop_image from './images/shop_image.png'
+import caterogy_milk_image from './images/caterogy_milk_image.jpg'
 
 export {
   pay_icon,
@@ -29,5 +30,6 @@ export {
   filter_icon,
   add_to_basket_icon,
 
-  shop_icon,
+  shop_image,
+  caterogy_milk_image,
 }

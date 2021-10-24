@@ -71,3 +71,9 @@ export const PRODUCTS = [
   },
 ]
 
+export const CATEGORIES = [
+  {
+
+  },
+
+]
