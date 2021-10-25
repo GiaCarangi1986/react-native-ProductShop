@@ -5,6 +5,7 @@ const screenHeight = Dimensions.get('window').height;
 
 export default {
   greenBackground: '#ABFA7A',
+  green: 'green',
   white: 'white',
   mainBackground: '#e7eda1',
   black: 'black',
@@ -16,6 +17,7 @@ export default {
   fontSizeHeaderHome: 36,
   fontSizeIcon: 12,
   fontSizeSeacrh: 14,
+  fontSizeModal: 18,
 
   screenWidth,
   screenHeight

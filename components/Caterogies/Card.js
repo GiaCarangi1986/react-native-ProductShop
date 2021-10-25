@@ -16,9 +16,8 @@ const Card = ({ navigation }) => {
           <Wrapper nameOfStyle='card_scroll_container'>
             {CATEGORIES.map((el) => {
               return (
-                <View>
+                <View key={el.id}>
                   <Button
-                    key={el.id}
                     icon={
                       <Icon
                         src={el.image}
@@ -30,7 +29,7 @@ const Card = ({ navigation }) => {
                     titleStyle={style.btn_text}
                     type="clear"
                     onPress={() =>
-                      navigation.navigate(TITLE_FOR_SCREEN.products.component)
+                      navigation.navigate(TITLE_FOR_SCREEN.products.component, { id_caterogy: el.id })
                     }
                   />
                 </View>

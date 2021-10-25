@@ -108,5 +108,28 @@ export default StyleSheet.create({
     flexWrap: 'wrap',
     alignContent: 'flex-start',
     gap: 10,
-  }
+  },
+  modal: {
+    display: "flex",
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+    height: '100%',
+  },
+  modal_form: {
+    padding: 20,
+    borderWidth: 2,
+    borderRadius: 15,
+    shadowColor: styles.white,
+    shadowRadius: 15,
+    backgroundColor: styles.white,
+    gap: 10,
+  },
+  btn_group: {
+    display: 'flex',
+    flexDirection: 'row',
+    gap: 10,
+    width: '100%',
+    justifyContent: 'flex-end',
+  },
 });

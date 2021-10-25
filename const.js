@@ -10,6 +10,18 @@ export const USER_NAME = 'Софья Х.'
 export const CATALOG = 'Каталог'
 export const BASKET = 'Корзина'
 export const SLOGAN = 'Мы - то, что мы едим'
+
+export const ANSWER_IN_MODAL = {
+  ok: 'Ок',
+  delete: 'Удалить',
+  cancel: 'Отмена',
+}
+
+export const TITLE_FOR_MODAL = {
+  add_to_basket: "Товар успешно добавлен в корзину!",
+  delete_product: "Удалить товар(ы) из корзины?",
+}
+
 export const TITLE_FOR_SCREEN = {
   home: {
     title: 'Главная',
@@ -24,7 +36,7 @@ export const TITLE_FOR_SCREEN = {
     component: 'Products',
   },
   caterogies: {
-    title: 'Категории продуктов',
+    title: 'Категория продуктов',
     component: 'Caterogies',
   },
 }
@@ -51,6 +63,7 @@ export const PRODUCTS = [
     },
     id: 1,
     id_categoria: 1,
+    count: 2,
   },
   {
     name: 'продукт 2',
@@ -60,6 +73,7 @@ export const PRODUCTS = [
     },
     id: 2,
     id_categoria: 2,
+    count: 1,
   },
   {
     name: 'продукт 3',
@@ -69,6 +83,7 @@ export const PRODUCTS = [
     },
     id: 3,
     id_categoria: 3,
+    count: 1,
   },
   {
     name: 'продукт 4',
@@ -78,6 +93,7 @@ export const PRODUCTS = [
     },
     id: 4,
     id_categoria: 4,
+    count: 1,
   },
   {
     name: 'продукт 5',
@@ -87,6 +103,7 @@ export const PRODUCTS = [
     },
     id: 5,
     id_categoria: 5,
+    count: 1,
   },
   {
     name: 'продукт 6',
@@ -96,6 +113,7 @@ export const PRODUCTS = [
     },
     id: 6,
     id_categoria: 6,
+    count: 3,
   },
 ]
 

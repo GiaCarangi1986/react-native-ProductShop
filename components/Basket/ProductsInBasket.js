@@ -4,14 +4,15 @@ import { ScrollView, Text } from 'react-native';
 import Wrapper from "../../views/Wrappers";
 import { ProductItem, TotalProductsInBasket } from ".";
 import style from "./style";
-import { EMPTY_BASKET, PRODUCTS } from "../../const";
+import { EMPTY_BASKET, PRODUCTS, TITLE_FOR_MODAL } from "../../const";
 import { initValues } from "../../utils/utils";
+import ModalWarning from "../../views/ModalWarning";
 
 const ProductsInBasket = () => {
   const [curPrice, setCurPrice] = useState(0)
   const [isAllChecked, setAllCheck] = useState(false)
   const [smthCheck, setSomeCheck] = useState(false)
-
+  const [modalVisible, setModalVisible] = useState(false);
   const [items, setItems] = useState(PRODUCTS)
 
   const onSubmit = (data) => {
@@ -55,6 +56,10 @@ const ProductsInBasket = () => {
     formik.setValues(initValues(newItems))
   }
 
+  const actionCancel = () => {
+    formik.setValues(initValues(items))
+  }
+
   useEffect(() => {
     let cost = 0;
     let countOfCheck = 0
@@ -89,34 +94,41 @@ const ProductsInBasket = () => {
     <Wrapper nameOfStyle='all-products'>
       {items.length ? (
         <>
-          <Wrapper nameOfStyle='main-in-products'>
-            <TotalProductsInBasket
-              cost={curPrice}
-              isAllChecked={isAllChecked}
-              chooseAllCheck={chooseAllCheck}
-              smthCheck={smthCheck}
-              deleteProducts={deleteProducts}
-              onSubmit={onSubmit}
-            />
-          </Wrapper>
-          <ScrollView style={style.scroll_height}>
-            {
-              items.map((product, index) => {
-                return (
-                  <ProductItem
-                    title={product.name}
-                    cost={product.price.cost}
-                    unit={product.price.unit}
-                    key={product.id}
-                    id={product.id}
-                    formik={formik}
-                    topRadius={index === 0 ? true : false}
-                    bottomRadius={index === items.length - 1 ? true : false}
-                  />
-                )
-              })
-            }
-          </ScrollView>
+          {modalVisible ? (
+            <ModalWarning setModalVisible={setModalVisible} text={TITLE_FOR_MODAL.delete_product} modalVisible={modalVisible}
+              deleteProducts={deleteProducts} actionCancel={actionCancel} deleteBtn />
+          ) : (
+            <>
+              <Wrapper nameOfStyle='main-in-products'>
+                <TotalProductsInBasket
+                  cost={curPrice}
+                  isAllChecked={isAllChecked}
+                  chooseAllCheck={chooseAllCheck}
+                  smthCheck={smthCheck}
+                  setModalVisible={setModalVisible}
+                  onSubmit={onSubmit}
+                />
+              </Wrapper>
+              <ScrollView style={style.scroll_height}>
+                {
+                  items.map((product, index) => {
+                    return (
+                      <ProductItem
+                        title={product.name}
+                        cost={product.price.cost}
+                        unit={product.price.unit}
+                        key={product.id}
+                        id={product.id}
+                        formik={formik}
+                        topRadius={index === 0 ? true : false}
+                        bottomRadius={index === items.length - 1 ? true : false}
+                      />
+                    )
+                  })
+                }
+              </ScrollView>
+            </>
+          )}
         </>
       ) : (
         <Wrapper nameOfStyle='empty-basket'>

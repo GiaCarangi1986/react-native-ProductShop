@@ -5,7 +5,7 @@ export const initValues = (val = null) => {
       ...newVals,
       [elem.id]: {
         id: false,
-        count: 1,
+        count: elem.count,
       }
     }
     return newVals

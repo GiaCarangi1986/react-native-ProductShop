@@ -8,7 +8,7 @@ import Icon from '../../views/Icon'
 import { DELETE, PAY } from "../../const";
 
 const TotalProductsInBasket = ({ title = 'Итого: ', cost = 0, unit = 'р', isAllChecked = false, chooseAllCheck = () => { },
-  smthCheck = false, deleteProducts = () => { }, onSubmit = () => { } }) => {
+  smthCheck = false, setModalVisible = () => { }, onSubmit = () => { } }) => {
   return (
     <Wrapper nameOfStyle='card-product' otherStyle='total-price-container' topRadius bottomRadius>
       <Wrapper nameOfStyle='horizontal-container_product' otherStyle='total-price-width'>
@@ -34,7 +34,7 @@ const TotalProductsInBasket = ({ title = 'Итого: ', cost = 0, unit = 'р', 
             titleStyle={style.btn_icon_text_delete}
             title={DELETE}
             type="clear"
-            onPress={deleteProducts}
+            onPress={() => setModalVisible(true)}
           />
         )}
         <Button
