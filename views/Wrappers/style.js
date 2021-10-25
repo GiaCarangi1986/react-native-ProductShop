@@ -92,5 +92,21 @@ export default StyleSheet.create({
     justifyContent: 'space-between',
     flexDirection: 'row',
     marginBottom: 10,
+  },
+  card_container: {
+    width: '100%',
+    height: '80%',
+    padding: 10,
+    paddingTop: 20,
+    paddingBottom: 20,
+  },
+  card_scroll_container: {
+    display: "flex",
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    justifyContent: 'space-between',
+    flexWrap: 'wrap',
+    alignContent: 'flex-start',
+    gap: 10,
   }
 });

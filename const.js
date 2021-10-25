@@ -1,3 +1,7 @@
+import {
+  caterogy_milk_image, category_vegetables_image, category_wine_image, category_fructs_image, category_bread_image, category_meat_image
+} from "./assets"
+
 export const NAME_OF_SHOP = 'Marlen'
 export const DELETE = 'Удалить'
 export const PAY = 'Оплатить'
@@ -28,6 +32,7 @@ export const PRODUCTS = [
       unit: 'р'
     },
     id: 1,
+    id_categoria: 1,
   },
   {
     name: 'продукт 2',
@@ -36,6 +41,7 @@ export const PRODUCTS = [
       unit: 'кг/р'
     },
     id: 2,
+    id_categoria: 2,
   },
   {
     name: 'продукт 3',
@@ -44,6 +50,7 @@ export const PRODUCTS = [
       unit: 'кг/р'
     },
     id: 3,
+    id_categoria: 3,
   },
   {
     name: 'продукт 4',
@@ -52,6 +59,7 @@ export const PRODUCTS = [
       unit: 'р'
     },
     id: 4,
+    id_categoria: 4,
   },
   {
     name: 'продукт 5',
@@ -60,6 +68,7 @@ export const PRODUCTS = [
       unit: 'кг/р'
     },
     id: 5,
+    id_categoria: 5,
   },
   {
     name: 'продукт 6',
@@ -68,12 +77,54 @@ export const PRODUCTS = [
       unit: 'р'
     },
     id: 6,
+    id_categoria: 6,
   },
 ]
 
 export const CATEGORIES = [
   {
-
+    image: caterogy_milk_image,
+    title: 'Молочные изделия',
+    id: 1,
   },
-
+  {
+    image: category_vegetables_image,
+    title: 'Овощи',
+    id: 2,
+  },
+  {
+    image: category_wine_image,
+    title: 'Вино',
+    id: 3,
+  },
+  {
+    image: category_fructs_image,
+    title: 'Фрукты',
+    id: 4,
+  },
+  {
+    image: category_bread_image,
+    title: 'Хлебобулочные изделия',
+    id: 5,
+  },
+  {
+    image: category_meat_image,
+    title: 'Мясные изделия',
+    id: 6,
+  },
+  {
+    image: category_fructs_image,
+    title: 'Фрукты',
+    id: 4,
+  },
+  {
+    image: category_bread_image,
+    title: 'Хлебобулочные изделия',
+    id: 5,
+  },
+  {
+    image: category_meat_image,
+    title: 'Мясные изделия',
+    id: 6,
+  },
 ]
