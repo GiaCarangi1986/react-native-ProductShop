@@ -10,6 +10,24 @@ export const USER_NAME = 'Софья Х.'
 export const CATALOG = 'Каталог'
 export const BASKET = 'Корзина'
 export const SLOGAN = 'Мы - то, что мы едим'
+export const TITLE_FOR_SCREEN = {
+  home: {
+    title: 'Главная',
+    component: 'Home',
+  },
+  basket: {
+    title: 'Корзина',
+    component: 'Basket',
+  },
+  products: {
+    title: 'Список продуктов',
+    component: 'Products',
+  },
+  caterogies: {
+    title: 'Категории продуктов',
+    component: 'Caterogies',
+  },
+}
 
 export const SEARCH = {
   text: 'Поиск...',

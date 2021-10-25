@@ -4,10 +4,10 @@ import FooterHome from "../../views/FooterHome";
 import BodyHome from "../../views/BodyHome";
 import Wrapper from "../../views/Wrappers";
 
-const Home = () => {
+const Home = ({ navigation }) => {
   return (
     <Wrapper nameOfStyle='wrap-container'>
-      <HeaderHome />
+      <HeaderHome navigation={navigation} />
       <BodyHome />
       <FooterHome />
     </Wrapper>

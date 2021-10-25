@@ -5,8 +5,9 @@ import Icon from '../Icon'
 import style from "./style";
 import { catalog_icon, basket_icon } from '../../assets'
 import { CATALOG, NAME_OF_SHOP, BASKET } from "../../const";
+import { TITLE_FOR_SCREEN } from "../../const";
 
-const HeaderHome = () => {
+const HeaderHome = ({ navigation }) => {
   return (
     <View style={style.container}>
       <View style={style.container_btns}>
@@ -18,6 +19,9 @@ const HeaderHome = () => {
           titleStyle={style.btn_icon_text}
           title={CATALOG}
           type="clear"
+          onPress={() =>
+            navigation.navigate(TITLE_FOR_SCREEN.caterogies.component)
+          }
         />
         <Button
           icon={
@@ -27,6 +31,9 @@ const HeaderHome = () => {
           titleStyle={style.btn_icon_text}
           title={BASKET}
           type="clear"
+          onPress={() =>
+            navigation.navigate(TITLE_FOR_SCREEN.basket.component)
+          }
         />
       </View>
       <Text style={style.title}>{NAME_OF_SHOP}</Text>
