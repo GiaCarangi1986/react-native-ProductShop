@@ -3,9 +3,9 @@ import { useFormik } from "formik";
 import { ScrollView } from 'react-native';
 import Wrapper from "../../views/Wrappers";
 import { SettingList, ProductItem } from '.'
-import { PRODUCTS, TITLE_FOR_MODAL } from '../../const'
+import { PRODUCTS, MODAL_CONSTS } from '../../const'
 import { initValues } from "../../utils/utils";
-import ModalWarning from '../../views/ModalWarning'
+import Modal from '../../views/Modal'
 import style from "./style";
 
 const ContentProductsList = ({ paramsFromCategory = {} }) => {
@@ -39,7 +39,7 @@ const ContentProductsList = ({ paramsFromCategory = {} }) => {
       {items.length ? (
         <>
           {modalVisible ? (
-            < ModalWarning setModalVisible={setModalVisible} text={TITLE_FOR_MODAL.add_to_basket} modalVisible={modalVisible} />
+            < Modal setModalVisible={setModalVisible} modalVisible={modalVisible} type={MODAL_CONSTS.add_to_basket.name} />
           ) : (
             <>
               <SettingList getOrderingProducts={getOrderingProducts} getSearchProducts={getSearchProducts} />

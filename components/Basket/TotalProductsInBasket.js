@@ -5,10 +5,10 @@ import Wrapper from "../../views/Wrappers";
 import style from "./style";
 import { pay_icon, pay_disabled_icon, delete_icon } from '../../assets'
 import Icon from '../../views/Icon'
-import { DELETE, PAY } from "../../const";
+import { DELETE, PAY, MODAL_CONSTS } from "../../const";
 
 const TotalProductsInBasket = ({ title = 'Итого: ', cost = 0, unit = 'р', isAllChecked = false, chooseAllCheck = () => { },
-  smthCheck = false, setModalVisible = () => { }, onSubmit = () => { } }) => {
+  smthCheck = false, setModalVisible = () => { }, onSubmit = () => { }, setType = () => { } }) => {
   return (
     <Wrapper nameOfStyle='card-product' otherStyle='total-price-container' topRadius bottomRadius>
       <Wrapper nameOfStyle='horizontal-container_product' otherStyle='total-price-width'>
@@ -34,7 +34,10 @@ const TotalProductsInBasket = ({ title = 'Итого: ', cost = 0, unit = 'р', 
             titleStyle={style.btn_icon_text_delete}
             title={DELETE}
             type="clear"
-            onPress={() => setModalVisible(true)}
+            onPress={() => {
+              setType(MODAL_CONSTS.delete_product.name)
+              setModalVisible(true)
+            }}
           />
         )}
         <Button

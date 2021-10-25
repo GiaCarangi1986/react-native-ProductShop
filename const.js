@@ -11,15 +11,22 @@ export const CATALOG = 'Каталог'
 export const BASKET = 'Корзина'
 export const SLOGAN = 'Мы - то, что мы едим'
 
-export const ANSWER_IN_MODAL = {
-  ok: 'Ок',
-  delete: 'Удалить',
-  cancel: 'Отмена',
-}
-
-export const TITLE_FOR_MODAL = {
-  add_to_basket: "Товар успешно добавлен в корзину!",
-  delete_product: "Удалить товар(ы) из корзины?",
+export const MODAL_CONSTS = {
+  pay: {
+    answer: ['Ок'],
+    name: 'pay',
+    title: "Благодарим за покупку!",
+  },
+  delete_product: {
+    answer: ['Удалить', 'Отмена'],
+    name: 'delete_product',
+    title: "Удалить товар(ы) из корзины?",
+  },
+  add_to_basket: {
+    answer: ['Ок'],
+    name: 'add_to_basket',
+    title: "Товар успешно добавлен в корзину!",
+  },
 }
 
 export const TITLE_FOR_SCREEN = {

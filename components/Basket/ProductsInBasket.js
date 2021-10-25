@@ -4,9 +4,9 @@ import { ScrollView, Text } from 'react-native';
 import Wrapper from "../../views/Wrappers";
 import { ProductItem, TotalProductsInBasket } from ".";
 import style from "./style";
-import { EMPTY_BASKET, PRODUCTS, TITLE_FOR_MODAL } from "../../const";
+import { EMPTY_BASKET, PRODUCTS, MODAL_CONSTS } from "../../const";
 import { initValues } from "../../utils/utils";
-import ModalWarning from "../../views/ModalWarning";
+import Modal from "../../views/Modal";
 
 const ProductsInBasket = () => {
   const [curPrice, setCurPrice] = useState(0)
@@ -14,9 +14,12 @@ const ProductsInBasket = () => {
   const [smthCheck, setSomeCheck] = useState(false)
   const [modalVisible, setModalVisible] = useState(false);
   const [items, setItems] = useState(PRODUCTS)
+  const [type, setType] = useState(MODAL_CONSTS.pay.name)
 
   const onSubmit = (data) => {
     console.log(`data`, data)
+    setType(MODAL_CONSTS.pay.name)
+    setModalVisible(true)
   }
 
   const formik = useFormik({
@@ -95,8 +98,8 @@ const ProductsInBasket = () => {
       {items.length ? (
         <>
           {modalVisible ? (
-            <ModalWarning setModalVisible={setModalVisible} text={TITLE_FOR_MODAL.delete_product} modalVisible={modalVisible}
-              deleteProducts={deleteProducts} actionCancel={actionCancel} deleteBtn />
+            <Modal setModalVisible={setModalVisible} modalVisible={modalVisible}
+              deleteProducts={deleteProducts} actionCancel={actionCancel} type={type} />
           ) : (
             <>
               <Wrapper nameOfStyle='main-in-products'>
@@ -107,6 +110,7 @@ const ProductsInBasket = () => {
                   smthCheck={smthCheck}
                   setModalVisible={setModalVisible}
                   onSubmit={onSubmit}
+                  setType={setType}
                 />
               </Wrapper>
               <ScrollView style={style.scroll_height}>
