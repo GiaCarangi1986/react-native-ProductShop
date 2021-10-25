@@ -24,7 +24,7 @@ const Card = () => {
                     icon={
                       <Icon
                         src={el.image}
-                      // type='delete'
+                        type='card'
                       />
                     }
                     title={el.title}

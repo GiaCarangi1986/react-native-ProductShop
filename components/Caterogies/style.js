@@ -8,8 +8,13 @@ export default StyleSheet.create({
     height: 155,
   },
   btn_text: {
-    color: styles.black,
+    color: styles.white,
     fontSize: styles.fontSizeSeacrh,
+    position: 'absolute',
+    shadowColor: styles.black,
+    shadowRadius: 15,
+    textShadowColor: styles.black,
+    textShadowRadius: 15,
   },
   scroll_height: {
     height: 0,
