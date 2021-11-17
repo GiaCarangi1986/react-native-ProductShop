@@ -8,14 +8,3 @@ export const getData = (data = []) => {
   });
   return res
 }
-
-export const removeID = (data = {}) => {
-  // debugger
-  const product = { ...data }
-  const id = product.id
-  delete product.id
-  return {
-    id,
-    product,
-  }
-}

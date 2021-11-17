@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useFormik } from 'formik';
-import { ScrollView, Text } from 'react-native';
+import { ScrollView } from 'react-native';
 import Wrapper from "../../views/Wrappers";
+import InfoAboutStatus from '../InfoAboutStatus'
 import { ProductItem, TotalProductsInBasket } from ".";
-import style from "./style";
 import { INFO_OF_STATUS, PRODUCTS, MODAL_CONSTS, STATUSES } from "../../const";
 import { initValues } from "../../utils/utils";
 import Modal from "../../views/Modal";
 import { get_products_in_basket, update_product_in_basket } from "../../api";
-// вынести статсусы в отедльную компоненту
+import style from "./style";
+
 const ProductsInBasket = () => {
   const [curPrice, setCurPrice] = useState(0)
   const [isAllChecked, setAllCheck] = useState(false)
@@ -73,18 +74,12 @@ const ProductsInBasket = () => {
     formik.setValues(obj)
   }
 
-  const updateProduct = (id = -1, count = -1, obj = {}) => {
-    const updateProd = items.find(el => {
-      return Number(el.id) ? +el.id === +id : el.id === id
-    })
-    updateProd.count = count
-
+  const updateProduct = (id = -1, value = -1) => {
     setStatus(STATUSES.loading)
 
-    update_product_in_basket(updateProd)
+    update_product_in_basket(id, value)
       .then(() => {
         console.log('ok')
-        formik.setFieldValue([id], obj)
         setStatus(STATUSES.succsess)
       })
       .catch((err) => {
@@ -177,18 +172,12 @@ const ProductsInBasket = () => {
             )}
           </>
         ) : (
-          <Wrapper nameOfStyle='empty-basket'>
-            <Text style={style['empty-basket']}>{INFO_OF_STATUS.empty_basket}</Text>
-          </Wrapper>
+          <InfoAboutStatus text={INFO_OF_STATUS.empty_basket} />
         )
       ) : status === STATUSES.loading ? (
-        <Wrapper nameOfStyle='empty-basket'>
-          <Text style={style['empty-basket']}>{INFO_OF_STATUS.loading}</Text>
-        </Wrapper>
+        <InfoAboutStatus text={INFO_OF_STATUS.loading} />
       ) : (
-        <Wrapper nameOfStyle='empty-basket'>
-          <Text style={style['empty-basket']}>{INFO_OF_STATUS.error}</Text>
-        </Wrapper>
+        <InfoAboutStatus text={INFO_OF_STATUS.error} />
       )}
     </Wrapper>
   )

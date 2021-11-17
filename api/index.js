@@ -1,11 +1,11 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc, getDocs, updateDoc, doc } from "firebase/firestore";
+import { getFirestore, collection, addDoc, getDocs, updateDoc, doc, increment } from "firebase/firestore";
 // import "firebase/database";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
-import { getData, removeID } from "./serializer";
+import { getData } from "./serializer";
 
 const firebaseApp = initializeApp({
   apiKey: "AIzaSyAeLsCVCg-g8_4NgQthTmZ281Ywc2bwxqo",
@@ -24,10 +24,9 @@ const add_first_doc = async () => {
   return docRef.id
 }
 
-const update_product_in_basket = async function (product = {}) {
-  const obj = removeID(product)
-  const upProductRef = doc(db, "products", obj.id);
-  const res = await updateDoc(upProductRef, obj.product);
+const update_product_in_basket = async function (id = '', value = 0) {
+  const upProductRef = doc(db, "products", id);
+  const res = await updateDoc(upProductRef, { count: increment(value) });
   return res
 }
 

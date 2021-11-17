@@ -14,7 +14,8 @@ const ProductItem = ({ title = '', cost = 0, unit = 'р', formik = {}, topRadius
   const handleChangeCountPlus = () => {
     const obj = formik.values[id]
     obj.count++
-    updateProduct(id, obj.count, obj)
+    formik.setFieldValue([id], obj)
+    updateProduct(id, 1)
   }
 
   const handleChangeCountMinus = () => {
@@ -22,7 +23,8 @@ const ProductItem = ({ title = '', cost = 0, unit = 'р', formik = {}, topRadius
     if (obj.count > 1) {
       obj.count--
     }
-    updateProduct(id, obj.count, obj)
+    formik.setFieldValue([id], obj)
+    updateProduct(id, -1)
   }
 
   return (
