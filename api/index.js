@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc, getDocs, updateDoc, doc, increment } from "firebase/firestore";
+import { getFirestore, collection, addDoc, getDocs, updateDoc, doc, increment, deleteDoc } from "firebase/firestore";
 // import "firebase/database";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -36,6 +36,11 @@ const get_products_in_basket = async function () {
   return res
 }
 
+const delete_product_in_basket = async function (id = '') {
+  const res = await deleteDoc(doc(db, "products", id));
+  return res
+}
+
 export {
-  add_first_doc, get_products_in_basket, update_product_in_basket
+  add_first_doc, get_products_in_basket, update_product_in_basket, delete_product_in_basket
 }

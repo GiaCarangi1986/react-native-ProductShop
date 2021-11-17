@@ -7,7 +7,7 @@ import { ProductItem, TotalProductsInBasket } from ".";
 import { INFO_OF_STATUS, PRODUCTS, MODAL_CONSTS, STATUSES } from "../../const";
 import { initValues } from "../../utils/utils";
 import Modal from "../../views/Modal";
-import { get_products_in_basket, update_product_in_basket } from "../../api";
+import { get_products_in_basket, update_product_in_basket, delete_product_in_basket } from "../../api";
 import style from "./style";
 
 const ProductsInBasket = () => {
@@ -52,7 +52,14 @@ const ProductsInBasket = () => {
     const newItems = []
     keys.forEach(element => {
       if (curProducts[element]?.id) {
-        delete curProducts[element]
+        delete_product_in_basket(element)
+          .then((ok) => {
+            console.log(`ok`, ok)
+            delete curProducts[element]
+          })
+          .catch((err) => {
+            console.log(`err`, err)
+          })
       }
       else {
         newItems.push(items.find(item => Number(item.id) ? +item.id === +element : item.id === element))
@@ -60,8 +67,6 @@ const ProductsInBasket = () => {
     })
     setItems(newItems)
     formik.setValues(initValues(newItems))
-
-    // delete newItems, перебрать и для всех id выполнить delete + удалить id из объекта - ф-ция
   }
 
   const actionCancel = () => {
