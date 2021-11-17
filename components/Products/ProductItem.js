@@ -6,7 +6,9 @@ import { add_to_basket_icon } from '../../assets'
 import Icon from '../../views/Icon'
 import style from "./style";
 
-const ProductItem = ({ title = '', cost = 0, unit = 'р', formik = {}, id = -1, no_margin = null, setModalVisible = () => { } }) => {
+const ProductItem = ({ title = '', cost = 0, unit = 'р', formik = {}, id = -1, no_margin = null, setModalVisible = () => { },
+  addToBasket = () => { } }) => {
+
   const handleChangeCountPlus = () => {
     const obj = formik.values[id]
     obj.count++
@@ -31,7 +33,10 @@ const ProductItem = ({ title = '', cost = 0, unit = 'р', formik = {}, id = -1, 
           }
           buttonStyle={style.no_padding}
           type="clear"
-          onPress={() => setModalVisible(true)}
+          onPress={() => {
+            addToBasket(id, formik.values[id]?.count)
+            setModalVisible(true)
+          }}
         />
         <Wrapper nameOfStyle='check-product'>
           <Text style={style['product_title']}>{title}</Text>

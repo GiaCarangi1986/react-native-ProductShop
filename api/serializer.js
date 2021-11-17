@@ -8,3 +8,18 @@ export const getData = (data = []) => {
   });
   return res
 }
+
+export const renameId = (data = {}) => {
+  const obj = { ...data }
+  obj.id_product = obj.id
+  delete obj.id
+  return obj
+}
+
+export const updateProduct = (data = {}, count = -1) => {
+  const obj = { ...data }
+  obj.id_product = obj.id
+  obj.count += count
+  delete obj.id
+  return obj
+}

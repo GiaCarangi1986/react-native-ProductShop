@@ -131,54 +131,6 @@ export const PRODUCTS = [
   },
 ]
 
-export const CATEGORIES = [
-  {
-    image: caterogy_milk_image,
-    title: 'Молочные изделия',
-    id: 1,
-  },
-  {
-    image: category_vegetables_image,
-    title: 'Овощи',
-    id: 2,
-  },
-  {
-    image: category_wine_image,
-    title: 'Вино',
-    id: 3,
-  },
-  {
-    image: category_fructs_image,
-    title: 'Фрукты',
-    id: 4,
-  },
-  {
-    image: category_bread_image,
-    title: 'Хлебобулочные изделия',
-    id: 5,
-  },
-  {
-    image: category_meat_image,
-    title: 'Мясные изделия',
-    id: 6,
-  },
-  {
-    image: category_fructs_image,
-    title: 'Фрукты',
-    id: 4,
-  },
-  {
-    image: category_bread_image,
-    title: 'Хлебобулочные изделия',
-    id: 5,
-  },
-  {
-    image: category_meat_image,
-    title: 'Мясные изделия',
-    id: 6,
-  },
-]
-
 export const STATUSES = {
   loading: 'loading',
   succsess: 'succsess',

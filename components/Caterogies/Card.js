@@ -48,7 +48,7 @@ const Card = ({ navigation }) => {
                       titleStyle={style.btn_text}
                       type="clear"
                       onPress={() =>
-                        navigation.navigate(TITLE_FOR_SCREEN.products.component, { id_caterogy: el.id })
+                        navigation.navigate(TITLE_FOR_SCREEN.products.component, { id_categoria: el.id })
                       }
                     />
                   </View>

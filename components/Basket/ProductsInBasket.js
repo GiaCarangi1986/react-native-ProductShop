@@ -7,7 +7,7 @@ import { ProductItem, TotalProductsInBasket } from ".";
 import { INFO_OF_STATUS, MODAL_CONSTS, STATUSES } from "../../const";
 import { initValues } from "../../utils/utils";
 import Modal from "../../views/Modal";
-import { get_products_in_basket, update_product_in_basket, delete_product_in_basket } from "../../api";
+import { get_products_in_basket, update_product_in_basket, delete_product_in_basket, add_first_doc } from "../../api";
 import style from "./style";
 
 const ProductsInBasket = () => {
@@ -121,6 +121,7 @@ const ProductsInBasket = () => {
 
   useEffect(() => {
     setStatus(STATUSES.loading)
+    // add_first_doc()
     get_products_in_basket()
       .then((items) => {
         setItems(items)

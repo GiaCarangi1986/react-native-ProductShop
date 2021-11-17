@@ -1,11 +1,11 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc, getDocs, updateDoc, doc, increment, deleteDoc } from "firebase/firestore";
+import { getFirestore, collection, addDoc, getDocs, updateDoc, doc, increment, deleteDoc, query, where, collectionGroup } from "firebase/firestore";
 // import "firebase/database";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
-import { getData } from "./serializer";
+import { getData, renameId, updateProduct } from "./serializer";
 
 const firebaseApp = initializeApp({
   apiKey: "AIzaSyAeLsCVCg-g8_4NgQthTmZ281Ywc2bwxqo",
@@ -16,10 +16,14 @@ const firebaseApp = initializeApp({
 const db = getFirestore(firebaseApp);
 
 const add_first_doc = async () => {
-  const docRef = await addDoc(collection(db, "users"), {
-    first: "Ada",
-    last: "Lovelace",
-    born: 1815
+  const docRef = await addDoc(collection(db, 'all_products_in_shop'), {
+    name: 'Сыр Голландский',
+    price: {
+      cost: 200,
+      unit: 'кг/р'
+    },
+    id_categoria: '4mJmlkELVzxEvdtGw4FK',
+    count: 100,
   });
   return docRef.id
 }
@@ -47,6 +51,49 @@ const get_categories = async function () {
   return res
 }
 
+const get_products_for_category = async function (id = '') {
+  const products = query(collection(db, 'all_products_in_shop'), where('id_categoria', '==', id));
+  const querySnapshot = await getDocs(products);
+  const res = getData(querySnapshot)
+  return res
+}
+
+const get_unic_product = async function (id = {}) {
+  const product = query(collection(db, 'products'), where('id_product', '==', id));
+  const querySnapshot = await getDocs(product);
+  const res = getData(querySnapshot)
+  return res[0]
+}
+
+const add_existing_product_in_basket = async function (id = -1, count = -1, product = {}) {
+  const upProductRef = doc(db, "products", id);
+  const obj = updateProduct(product, count)
+  const res = await updateDoc(upProductRef, obj);
+  return res
+}
+
+const add_new_product_to_basket = async function (product = {}) {
+  const obj = renameId(product)
+  const res = await addDoc(collection(db, "products"), obj);
+  return res
+}
+
+const add_product_to_basket = async function (product = {}) {
+  const unic_product = await get_unic_product(product.id)
+  if (unic_product) {
+    const res = await add_existing_product_in_basket(unic_product.id, unic_product.count, product)
+    return res
+  }
+  const res = await add_new_product_to_basket(product)
+  return res
+}
+
 export {
-  add_first_doc, get_products_in_basket, update_product_in_basket, delete_product_in_basket, get_categories
+  add_first_doc,
+  get_products_in_basket,
+  update_product_in_basket,
+  delete_product_in_basket,
+  get_categories,
+  get_products_for_category,
+  add_product_to_basket,
 }

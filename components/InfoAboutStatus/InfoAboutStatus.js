@@ -5,8 +5,8 @@ import style from "./style";
 
 const InfoAboutStatus = ({ text }) => {
   return (
-    <Wrapper nameOfStyle='empty-basket'>
-      <Text style={style['empty-basket']}>{text}</Text>
+    <Wrapper nameOfStyle='info'>
+      <Text style={style.info}>{text}</Text>
     </Wrapper>
   )
 }

@@ -82,7 +82,7 @@ export default StyleSheet.create({
   'check-product': {
     width: '100%',
   },
-  'empty-basket': {
+  info: {
     justifyContent: 'center',
     alignItems: 'center',
     height: '100%',
