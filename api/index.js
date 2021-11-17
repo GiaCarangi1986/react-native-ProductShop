@@ -41,6 +41,12 @@ const delete_product_in_basket = async function (id = '') {
   return res
 }
 
+const get_categories = async function () {
+  const querySnapshot = await getDocs(collection(db, "categories"));
+  const res = getData(querySnapshot)
+  return res
+}
+
 export {
-  add_first_doc, get_products_in_basket, update_product_in_basket, delete_product_in_basket
+  add_first_doc, get_products_in_basket, update_product_in_basket, delete_product_in_basket, get_categories
 }

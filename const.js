@@ -14,6 +14,8 @@ export const INFO_OF_STATUS = {
   empty_basket: 'Ваша корзина пуста',
   loading: 'Идет загрузка...',
   error: 'На сервере произошла ошибка, попробуйте позже',
+  empty_caterogy: 'Пока в магазине не добавлено ни одной категории',
+  empty_products_in_category: 'Пока в этой категории нет доступных продуктов',
 }
 
 export const MODAL_CONSTS = {

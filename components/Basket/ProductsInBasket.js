@@ -4,7 +4,7 @@ import { ScrollView } from 'react-native';
 import Wrapper from "../../views/Wrappers";
 import InfoAboutStatus from '../InfoAboutStatus'
 import { ProductItem, TotalProductsInBasket } from ".";
-import { INFO_OF_STATUS, PRODUCTS, MODAL_CONSTS, STATUSES } from "../../const";
+import { INFO_OF_STATUS, MODAL_CONSTS, STATUSES } from "../../const";
 import { initValues } from "../../utils/utils";
 import Modal from "../../views/Modal";
 import { get_products_in_basket, update_product_in_basket, delete_product_in_basket } from "../../api";
@@ -15,7 +15,7 @@ const ProductsInBasket = () => {
   const [isAllChecked, setAllCheck] = useState(false)
   const [smthCheck, setSomeCheck] = useState(false)
   const [modalVisible, setModalVisible] = useState(false);
-  const [items, setItems] = useState(null)
+  const [items, setItems] = useState([])
   const [type, setType] = useState(MODAL_CONSTS.pay.name)
   const [status, setStatus] = useState(STATUSES.loading)
 
