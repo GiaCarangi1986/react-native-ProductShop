@@ -15,18 +15,18 @@ const firebaseApp = initializeApp({
 
 const db = getFirestore(firebaseApp);
 
-const add_first_doc = async () => {
-  const docRef = await addDoc(collection(db, 'all_products_in_shop'), {
-    name: 'Сыр Голландский',
-    price: {
-      cost: 200,
-      unit: 'кг/р'
-    },
-    id_categoria: '4mJmlkELVzxEvdtGw4FK',
-    count: 100,
-  });
-  return docRef.id
-}
+// const add_first_doc = async () => {
+//   const docRef = await addDoc(collection(db, 'all_products_in_shop'), {
+//     name: 'Морковь в упаковке',
+//     price: {
+//       cost: 50,
+//       unit: 'р/кг'
+//     },
+//     id_categoria: 'P3uTdDjoHw1tP40iRBlH',
+//     count: 1,
+//   });
+//   return docRef.id
+// }
 
 const update_product_in_basket = async function (id = '', value = 0) {
   const upProductRef = doc(db, "products", id);
@@ -89,7 +89,7 @@ const add_product_to_basket = async function (product = {}) {
 }
 
 export {
-  add_first_doc,
+  // add_first_doc,
   get_products_in_basket,
   update_product_in_basket,
   delete_product_in_basket,
