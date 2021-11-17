@@ -5,11 +5,16 @@ import {
 export const NAME_OF_SHOP = 'Marlen'
 export const DELETE = 'Удалить'
 export const PAY = 'Оплатить'
-export const EMPTY_BASKET = 'Ваша корзина пуста'
 export const USER_NAME = 'Софья Х.'
 export const CATALOG = 'Каталог'
 export const BASKET = 'Корзина'
 export const SLOGAN = 'Мы - то, что мы едим'
+
+export const INFO_OF_STATUS = {
+  empty_basket: 'Ваша корзина пуста',
+  loading: 'Идет загрузка...',
+  error: 'На сервере произошла ошибка, попробуйте позже',
+}
 
 export const MODAL_CONSTS = {
   pay: {
@@ -171,3 +176,9 @@ export const CATEGORIES = [
     id: 6,
   },
 ]
+
+export const STATUSES = {
+  loading: 'loading',
+  succsess: 'succsess',
+  error: 'error',
+}

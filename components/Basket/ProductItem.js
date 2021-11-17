@@ -4,7 +4,7 @@ import { Button } from 'react-native-elements';
 import Wrapper from "../../views/Wrappers";
 import style from "./style";
 
-const ProductItem = ({ title = '', cost = 0, unit = 'р', formik = {}, topRadius = null, bottomRadius = null, id = -1 }) => {
+const ProductItem = ({ title = '', cost = 0, unit = 'р', formik = {}, topRadius = null, bottomRadius = null, id = -1, updateProduct = () => { } }) => {
   const handleChangeCost = (e) => {
     const obj = formik.values[id]
     obj.id = e
@@ -14,7 +14,7 @@ const ProductItem = ({ title = '', cost = 0, unit = 'р', formik = {}, topRadius
   const handleChangeCountPlus = () => {
     const obj = formik.values[id]
     obj.count++
-    formik.setFieldValue([id], obj)
+    updateProduct(id, obj.count, obj)
   }
 
   const handleChangeCountMinus = () => {
@@ -22,8 +22,9 @@ const ProductItem = ({ title = '', cost = 0, unit = 'р', formik = {}, topRadius
     if (obj.count > 1) {
       obj.count--
     }
-    formik.setFieldValue([id], obj)
+    updateProduct(id, obj.count, obj)
   }
+
   return (
     <Wrapper nameOfStyle='card-product' topRadius={topRadius} bottomRadius={bottomRadius}>
       <Wrapper nameOfStyle='horizontal-container_product'>
