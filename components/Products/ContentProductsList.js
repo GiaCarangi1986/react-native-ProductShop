@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import { ScrollView } from 'react-native';
-import Wrapper from "../../views/Wrappers";
 import InfoAboutStatus from '../InfoAboutStatus'
+import GettingResult from "../GettingResult";
 import { SettingList, ProductItem } from '.'
-import { INFO_OF_STATUS, STATUSES, MODAL_CONSTS } from '../../const'
+import { INFO_OF_STATUS, STATUSES, MODAL_CONSTS, SORT_TYPES } from '../../const'
 import { initValues } from "../../utils/utils";
 import { get_products_for_category, add_product_to_basket } from "../../api";
 import Modal from '../../views/Modal'
@@ -15,10 +15,36 @@ const ContentProductsList = ({ paramsFromCategory = {} }) => { // id катег�
   const [items, setItems] = useState([])
   const [status, setStatus] = useState(STATUSES.loading)
   const [modalVisible, setModalVisible] = useState(false);
+  const [orderText, setOrderText] = useState(SORT_TYPES.descending.text)
+  const [orderIcon, setOrderIcon] = useState(SORT_TYPES.descending.name)
 
-  const getOrderingProducts = (type = '') => {
-    console.log(`type`, type)
+  const getProducts = (type = SORT_TYPES.descending.name) => {
+    setStatus(STATUSES.loading)
+
+    get_products_for_category(paramsFromCategory?.id_categoria, type)
+      .then((items) => {
+        console.log(`ok`, items)
+        setValues(items)
+      })
+      .catch((err) => {
+        console.log(`err`, err)
+        setStatus(STATUSES.error)
+      })
   }
+
+  const changeOrder = () => {
+    if (orderText === SORT_TYPES.ascending.text) {
+      setOrderIcon(SORT_TYPES.descending.name)
+      setOrderText(SORT_TYPES.descending.text)
+      getProducts(SORT_TYPES.descending.name)
+    }
+    else {
+      setOrderIcon(SORT_TYPES.ascending.name)
+      setOrderText(SORT_TYPES.ascending.text)
+      getProducts(SORT_TYPES.ascending.name)
+    }
+  }
+
   const getSearchProducts = (value = '') => {
     console.log(`value`, value)
   }
@@ -44,20 +70,14 @@ const ContentProductsList = ({ paramsFromCategory = {} }) => { // id катег�
       })
   }
 
-  useEffect(() => {
-    setStatus(STATUSES.loading)
+  const setValues = (items = []) => {
+    formik.setValues(initValues(items))
+    setItems(items)
+    setStatus(STATUSES.succsess)
+  }
 
-    get_products_for_category(paramsFromCategory?.id_categoria)
-      .then((items) => {
-        console.log(`ok`, items)
-        formik.setValues(initValues(items))
-        setItems(items)
-        setStatus(STATUSES.succsess)
-      })
-      .catch((err) => {
-        console.log(`err`, err)
-        setStatus(STATUSES.error)
-      })
+  useEffect(() => {
+    getProducts()
   }, [])
 
   const formik = useFormik({
@@ -66,46 +86,37 @@ const ContentProductsList = ({ paramsFromCategory = {} }) => { // id катег�
   })
 
   return (
-    <Wrapper nameOfStyle='all-products'>
-      {status === STATUSES.succsess ? (
-        items.length ? (
-          <>
-            {modalVisible ? (
-              < Modal setModalVisible={setModalVisible} modalVisible={modalVisible} type={MODAL_CONSTS.add_to_basket.name} />
-            ) : (
-              <>
-                <SettingList getOrderingProducts={getOrderingProducts} getSearchProducts={getSearchProducts} />
-                <ScrollView style={style.scroll_height}>
-                  {
-                    items.map((product, index) => {
-                      return (
-                        <ProductItem
-                          title={product.name}
-                          cost={product.price.cost}
-                          unit={product.price.unit}
-                          key={product.id}
-                          id={product.id}
-                          formik={formik}
-                          no_margin={index === 0 ? true : false}
-                          setModalVisible={setModalVisible}
-                          addToBasket={addToBasket}
-                        />
-                      )
-                    })
-                  }
-                </ScrollView>
-              </>
-            )}
-          </>
-        ) : (
-          <InfoAboutStatus text={INFO_OF_STATUS.empty_products_in_category} />
-        )
-      ) : status === STATUSES.loading ? (
-        <InfoAboutStatus text={INFO_OF_STATUS.loading} />
+    <GettingResult wrapperStyle='all-products' status={status}>
+      {items.length ? (modalVisible ? (
+        < Modal setModalVisible={setModalVisible} modalVisible={modalVisible} type={MODAL_CONSTS.add_to_basket.name} />
       ) : (
-        <InfoAboutStatus text={INFO_OF_STATUS.error} />
+        <>
+          <SettingList getSearchProducts={getSearchProducts} orderText={orderText} orderIcon={orderIcon} changeOrder={changeOrder} />
+          <ScrollView style={style.scroll_height}>
+            {
+              items.map((product, index) => {
+                return (
+                  <ProductItem
+                    title={product.name}
+                    cost={product.price.cost}
+                    unit={product.price.unit}
+                    key={product.id}
+                    id={product.id}
+                    formik={formik}
+                    no_margin={index === 0 ? true : false}
+                    setModalVisible={setModalVisible}
+                    addToBasket={addToBasket}
+                  />
+                )
+              })
+            }
+          </ScrollView>
+        </>
+      )
+      ) : (
+        <InfoAboutStatus text={INFO_OF_STATUS.empty_products_in_category} />
       )}
-    </Wrapper>
+    </GettingResult>
   )
 }
 

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "react-native-elements";
-import { ScrollView, Text, View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import Wrapper from "../../views/Wrappers";
+import GettingResult from "../GettingResult";
 import Icon from '../../views/Icon'
 import { TITLE_FOR_SCREEN, STATUSES, INFO_OF_STATUS } from "../../const";
 import InfoAboutStatus from '../InfoAboutStatus'
@@ -26,9 +27,9 @@ const Card = ({ navigation }) => {
   }, [])
 
   return (
-    <Wrapper nameOfStyle='card_container'>
-      {status === STATUSES.succsess ? (
-        caterogies.length ? (
+    <GettingResult wrapperStyle='card_container' status={status}>
+      <>
+        {caterogies.length ? (
           <ScrollView
             style={style.scroll_height}
           >
@@ -56,13 +57,12 @@ const Card = ({ navigation }) => {
               })}
             </Wrapper>
           </ScrollView>
-        ) : <InfoAboutStatus text={INFO_OF_STATUS.empty_caterogy} />
-      ) : status === STATUSES.loading ? (
-        <InfoAboutStatus text={INFO_OF_STATUS.loading} />
-      ) : (
-        <InfoAboutStatus text={INFO_OF_STATUS.error} />
-      )}
-    </Wrapper>
+        ) : (
+          <InfoAboutStatus text={INFO_OF_STATUS.empty_caterogy} />
+        )
+        }
+      </>
+    </GettingResult>
   )
 }
 

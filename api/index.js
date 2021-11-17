@@ -1,11 +1,12 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc, getDocs, updateDoc, doc, increment, deleteDoc, query, where, collectionGroup } from "firebase/firestore";
+import { getFirestore, collection, addDoc, getDocs, updateDoc, doc, increment, deleteDoc, query, where, orderBy } from "firebase/firestore";
 // import "firebase/database";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 import { getData, renameId, updateProduct } from "./serializer";
+import { SORT_TYPES } from "../const";
 
 const firebaseApp = initializeApp({
   apiKey: "AIzaSyAeLsCVCg-g8_4NgQthTmZ281Ywc2bwxqo",
@@ -51,8 +52,14 @@ const get_categories = async function () {
   return res
 }
 
-const get_products_for_category = async function (id = '') {
-  const products = query(collection(db, 'all_products_in_shop'), where('id_categoria', '==', id));
+const get_products_for_category = async function (id = '', type = SORT_TYPES.descending.name) { // + сортировка по возрастанию/убыванию
+  let products = {}
+  if (type === SORT_TYPES.descending.name) {
+    products = query(collection(db, 'all_products_in_shop'), where('id_categoria', '==', id), orderBy('name', 'desc'));
+  }
+  else {
+    products = query(collection(db, 'all_products_in_shop'), where('id_categoria', '==', id), orderBy('name'));
+  }
   const querySnapshot = await getDocs(products);
   const res = getData(querySnapshot)
   return res

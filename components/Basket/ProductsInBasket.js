@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useFormik } from 'formik';
 import { ScrollView } from 'react-native';
 import Wrapper from "../../views/Wrappers";
+import GettingResult from "../GettingResult";
 import InfoAboutStatus from '../InfoAboutStatus'
 import { ProductItem, TotalProductsInBasket } from ".";
 import { INFO_OF_STATUS, MODAL_CONSTS, STATUSES } from "../../const";
@@ -135,57 +136,49 @@ const ProductsInBasket = () => {
   }, [])
 
   return (
-    <Wrapper nameOfStyle='all-products'>
-      {status === STATUSES.succsess ? (
-        items.length ? (
-          <>
-            {modalVisible ? (
-              <Modal setModalVisible={setModalVisible} modalVisible={modalVisible}
-                deleteProducts={deleteProducts} actionCancel={actionCancel} type={type} />
-            ) : (
-              <>
-                <Wrapper nameOfStyle='main-in-products'>
-                  <TotalProductsInBasket
-                    cost={curPrice}
-                    isAllChecked={isAllChecked}
-                    chooseAllCheck={chooseAllCheck}
-                    smthCheck={smthCheck}
-                    setModalVisible={setModalVisible}
-                    onSubmit={onSubmit}
-                    setType={setType}
-                  />
-                </Wrapper>
-                <ScrollView style={style.scroll_height}>
-                  {
-                    items.map((product, index) => {
-                      return (
-                        <ProductItem
-                          title={product.name}
-                          cost={product.price.cost}
-                          unit={product.price.unit}
-                          key={product.id}
-                          id={product.id}
-                          formik={formik}
-                          topRadius={index === 0 ? true : false}
-                          bottomRadius={index === items.length - 1 ? true : false}
-                          updateProduct={updateProduct}
-                        />
-                      )
-                    })
-                  }
-                </ScrollView>
-              </>
-            )}
-          </>
+    <GettingResult wrapperStyle='all-products' status={status}>
+      {items.length ? (
+        modalVisible ? (
+          <Modal setModalVisible={setModalVisible} modalVisible={modalVisible}
+            deleteProducts={deleteProducts} actionCancel={actionCancel} type={type} />
         ) : (
-          <InfoAboutStatus text={INFO_OF_STATUS.empty_basket} />
+          <>
+            <Wrapper nameOfStyle='main-in-products'>
+              <TotalProductsInBasket
+                cost={curPrice}
+                isAllChecked={isAllChecked}
+                chooseAllCheck={chooseAllCheck}
+                smthCheck={smthCheck}
+                setModalVisible={setModalVisible}
+                onSubmit={onSubmit}
+                setType={setType}
+              />
+            </Wrapper>
+            <ScrollView style={style.scroll_height}>
+              {
+                items.map((product, index) => {
+                  return (
+                    <ProductItem
+                      title={product.name}
+                      cost={product.price.cost}
+                      unit={product.price.unit}
+                      key={product.id}
+                      id={product.id}
+                      formik={formik}
+                      topRadius={index === 0 ? true : false}
+                      bottomRadius={index === items.length - 1 ? true : false}
+                      updateProduct={updateProduct}
+                    />
+                  )
+                })
+              }
+            </ScrollView>
+          </>
         )
-      ) : status === STATUSES.loading ? (
-        <InfoAboutStatus text={INFO_OF_STATUS.loading} />
       ) : (
-        <InfoAboutStatus text={INFO_OF_STATUS.error} />
+        <InfoAboutStatus text={INFO_OF_STATUS.empty_basket} />
       )}
-    </Wrapper>
+    </GettingResult>
   )
 }
 

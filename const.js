@@ -59,77 +59,17 @@ export const SEARCH = {
   text: 'Поиск...',
   name: 'search'
 }
-export const ASCENDING = {
-  text: 'По возрастанию',
-  name: 'ascending',
-}
-export const DESCENDING = {
-  text: 'По убыванию',
-  name: 'descending',
-}
 
-export const PRODUCTS = [
-  {
-    name: 'Грецкие орехи ыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыы',
-    price: {
-      cost: 1000,
-      unit: 'р'
-    },
-    id: 1,
-    id_categoria: 1,
-    count: 2,
+export const SORT_TYPES = {
+  ascending: {
+    text: 'По возрастанию',
+    name: 'ascending',
   },
-  {
-    name: 'продукт 2',
-    price: {
-      cost: 100,
-      unit: 'кг/р'
-    },
-    id: 2,
-    id_categoria: 2,
-    count: 1,
+  descending: {
+    text: 'По убыванию',
+    name: 'descending',
   },
-  {
-    name: 'продукт 3',
-    price: {
-      cost: 200,
-      unit: 'кг/р'
-    },
-    id: 3,
-    id_categoria: 3,
-    count: 1,
-  },
-  {
-    name: 'продукт 4',
-    price: {
-      cost: 210,
-      unit: 'р'
-    },
-    id: 4,
-    id_categoria: 4,
-    count: 1,
-  },
-  {
-    name: 'продукт 5',
-    price: {
-      cost: 250,
-      unit: 'кг/р'
-    },
-    id: 5,
-    id_categoria: 5,
-    count: 1,
-  },
-  {
-    name: 'продукт 6',
-    price: {
-      cost: 50,
-      unit: 'р'
-    },
-    id: 6,
-    id_categoria: 6,
-    count: 3,
-  },
-]
+}
 
 export const STATUSES = {
   loading: 'loading',
