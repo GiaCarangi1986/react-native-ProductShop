@@ -6,7 +6,7 @@ import GettingResult from "../GettingResult";
 import { SettingList, ProductItem } from '.'
 import { INFO_OF_STATUS, STATUSES, MODAL_CONSTS, SORT_TYPES } from '../../const'
 import { initValues } from "../../utils/utils";
-import { get_products_for_category, add_product_to_basket, get_search_products } from "../../api";
+import { get_products_for_category, add_product_to_basket } from "../../api";
 import Modal from '../../views/Modal'
 
 import style from "./style";
@@ -17,11 +17,12 @@ const ContentProductsList = ({ paramsFromCategory = {} }) => { // id катег�
   const [modalVisible, setModalVisible] = useState(false);
   const [orderText, setOrderText] = useState(SORT_TYPES.descending.text)
   const [orderIcon, setOrderIcon] = useState(SORT_TYPES.descending.name)
+  const [searchValue, setSearchValue] = useState('')
 
-  const getProducts = (type = SORT_TYPES.descending.name) => {
+  const getProducts = (type = SORT_TYPES.descending, search = '') => {
     setStatus(STATUSES.loading)
 
-    get_products_for_category(paramsFromCategory?.id_categoria, type)
+    get_products_for_category(paramsFromCategory?.id_categoria, type, search)
       .then((items) => {
         console.log(`ok`, items)
         setValues(items)
@@ -36,27 +37,18 @@ const ContentProductsList = ({ paramsFromCategory = {} }) => { // id катег�
     if (orderText === SORT_TYPES.ascending.text) {
       setOrderIcon(SORT_TYPES.descending.name)
       setOrderText(SORT_TYPES.descending.text)
-      getProducts(SORT_TYPES.descending.name)
+      getProducts(SORT_TYPES.descending.name, searchValue)
     }
     else {
       setOrderIcon(SORT_TYPES.ascending.name)
       setOrderText(SORT_TYPES.ascending.text)
-      getProducts(SORT_TYPES.ascending.name)
+      getProducts(SORT_TYPES.ascending.name, searchValue)
     }
   }
 
   const getSearchProducts = (value = '') => {
-    setStatus(STATUSES.loading)
-
-    get_search_products(paramsFromCategory?.id_categoria, orderIcon, value)
-      .then((items) => {
-        console.log(`ok`, items)
-        setValues(items)
-      })
-      .catch((err) => {
-        console.log(`err`, err)
-        setStatus(STATUSES.error)
-      })
+    setSearchValue(value)
+    getProducts(orderIcon, value)
   }
 
   const onSubmit = (data) => {
@@ -101,7 +93,7 @@ const ContentProductsList = ({ paramsFromCategory = {} }) => { // id катег�
         < Modal setModalVisible={setModalVisible} modalVisible={modalVisible} type={MODAL_CONSTS.add_to_basket.name} />
       ) : (
         <>
-          <SettingList getSearchProducts={getSearchProducts} orderText={orderText} orderIcon={orderIcon} changeOrder={changeOrder} />
+          <SettingList getSearchProducts={getSearchProducts} orderText={orderText} orderIcon={orderIcon} changeOrder={changeOrder} searchValue={searchValue} />
           <ScrollView style={style.scroll_height}>
             {
               items.map((product, index) => {

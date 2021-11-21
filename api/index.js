@@ -39,13 +39,22 @@ const get_categories = async function () {
   return res
 }
 
-const get_products_for_category = async function (id = '', type = SORT_TYPES.descending.name) { // + сортировка по возрастанию/убыванию
+// + сортировка по возрастанию/убыванию + поиск
+const get_products_for_category = async function (id = '', type = SORT_TYPES.descending.namesearchStr = '', searchStr = '') {
   let products = {}
   if (type === SORT_TYPES.descending.name) {
-    products = query(collection(db, 'all_products_in_shop'), where('id_categoria', '==', id), orderBy('name', 'desc'));
+    products = query(collection(db, 'all_products_in_shop'),
+      where('id_categoria', '==', id),
+      where('name', '>=', searchStr),
+      where('name', '<=', searchStr + '\uf8ff'),
+      orderBy('name', 'desc'));
   }
   else {
-    products = query(collection(db, 'all_products_in_shop'), where('id_categoria', '==', id), orderBy('name'));
+    products = query(collection(db, 'all_products_in_shop'),
+      where('id_categoria', '==', id),
+      where('name', '>=', searchStr),
+      where('name', '<=', searchStr + '\uf8ff'),
+      orderBy('name'));
   }
   const querySnapshot = await getDocs(products);
   const res = getData(querySnapshot)
@@ -82,27 +91,6 @@ const add_product_to_basket = async function (product = {}) {
   return res
 }
 
-const get_search_products = async function (id = '', type = SORT_TYPES.descending.name, searchStr = '') {
-  let products = {}
-  if (type === SORT_TYPES.descending.name) {
-    products = query(collection(db, 'all_products_in_shop'),
-      where('id_categoria', '==', id),
-      where('name', '>=', searchStr),
-      where('name', '<=', searchStr + '\uf8ff'),
-      orderBy('name', 'desc'));
-  }
-  else {
-    products = query(collection(db, 'all_products_in_shop'),
-      where('id_categoria', '==', id),
-      where('name', '>=', searchStr),
-      where('name', '<=', searchStr + '\uf8ff'),
-      orderBy('name'));
-  }
-  const querySnapshot = await getDocs(products);
-  const res = getData(querySnapshot)
-  return res
-}
-
 export {
   get_products_in_basket,
   update_product_in_basket,
@@ -110,5 +98,4 @@ export {
   get_categories,
   get_products_for_category,
   add_product_to_basket,
-  get_search_products,
 }

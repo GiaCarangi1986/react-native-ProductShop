@@ -8,7 +8,7 @@ import Icon from '../../views/Icon'
 import { search_icon, search_delete_icon, filter_icon } from "../../assets";
 import style from "./style";
 
-const SettingList = ({ getSearchProducts = () => { }, orderText = '', orderIcon = '', changeOrder = () => { } }) => {
+const SettingList = ({ getSearchProducts = () => { }, orderText = '', orderIcon = '', changeOrder = () => { }, searchValue = '' }) => {
   const onSubmit = () => {
     getSearchProducts(formik.values.search)
     Keyboard.dismiss()
@@ -23,7 +23,7 @@ const SettingList = ({ getSearchProducts = () => { }, orderText = '', orderIcon 
   }
 
   const formik = useFormik({
-    initialValues: {},
+    initialValues: { search: searchValue },
     onSubmit
   })
 
