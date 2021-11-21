@@ -9,10 +9,8 @@ import { search_icon, search_delete_icon, filter_icon } from "../../assets";
 import style from "./style";
 
 const SettingList = ({ getSearchProducts = () => { }, orderText = '', orderIcon = '', changeOrder = () => { } }) => {
-  const onSubmit = (data) => {
+  const onSubmit = () => {
     getSearchProducts(formik.values.search)
-    keyAction()
-    console.log(`data`, data)
     Keyboard.dismiss()
   }
 

@@ -16,19 +16,6 @@ const firebaseApp = initializeApp({
 
 const db = getFirestore(firebaseApp);
 
-// const add_first_doc = async () => {
-//   const docRef = await addDoc(collection(db, 'all_products_in_shop'), {
-//     name: 'Морковь в упаковке',
-//     price: {
-//       cost: 50,
-//       unit: 'р/кг'
-//     },
-//     id_categoria: 'P3uTdDjoHw1tP40iRBlH',
-//     count: 1,
-//   });
-//   return docRef.id
-// }
-
 const update_product_in_basket = async function (id = '', value = 0) {
   const upProductRef = doc(db, "products", id);
   const res = await updateDoc(upProductRef, { count: increment(value) });
@@ -95,12 +82,33 @@ const add_product_to_basket = async function (product = {}) {
   return res
 }
 
+const get_search_products = async function (id = '', type = SORT_TYPES.descending.name, searchStr = '') {
+  let products = {}
+  if (type === SORT_TYPES.descending.name) {
+    products = query(collection(db, 'all_products_in_shop'),
+      where('id_categoria', '==', id),
+      where('name', '>=', searchStr),
+      where('name', '<=', searchStr + '\uf8ff'),
+      orderBy('name', 'desc'));
+  }
+  else {
+    products = query(collection(db, 'all_products_in_shop'),
+      where('id_categoria', '==', id),
+      where('name', '>=', searchStr),
+      where('name', '<=', searchStr + '\uf8ff'),
+      orderBy('name'));
+  }
+  const querySnapshot = await getDocs(products);
+  const res = getData(querySnapshot)
+  return res
+}
+
 export {
-  // add_first_doc,
   get_products_in_basket,
   update_product_in_basket,
   delete_product_in_basket,
   get_categories,
   get_products_for_category,
   add_product_to_basket,
+  get_search_products,
 }

@@ -6,7 +6,7 @@ import GettingResult from "../GettingResult";
 import { SettingList, ProductItem } from '.'
 import { INFO_OF_STATUS, STATUSES, MODAL_CONSTS, SORT_TYPES } from '../../const'
 import { initValues } from "../../utils/utils";
-import { get_products_for_category, add_product_to_basket } from "../../api";
+import { get_products_for_category, add_product_to_basket, get_search_products } from "../../api";
 import Modal from '../../views/Modal'
 
 import style from "./style";
@@ -46,7 +46,17 @@ const ContentProductsList = ({ paramsFromCategory = {} }) => { // id катег�
   }
 
   const getSearchProducts = (value = '') => {
-    console.log(`value`, value)
+    setStatus(STATUSES.loading)
+
+    get_search_products(paramsFromCategory?.id_categoria, orderIcon, value)
+      .then((items) => {
+        console.log(`ok`, items)
+        setValues(items)
+      })
+      .catch((err) => {
+        console.log(`err`, err)
+        setStatus(STATUSES.error)
+      })
   }
 
   const onSubmit = (data) => {
