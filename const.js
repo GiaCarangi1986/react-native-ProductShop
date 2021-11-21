@@ -1,7 +1,3 @@
-import {
-  caterogy_milk_image, category_vegetables_image, category_wine_image, category_fructs_image, category_bread_image, category_meat_image
-} from "./assets"
-
 export const NAME_OF_SHOP = 'Marlen'
 export const DELETE = 'Удалить'
 export const PAY = 'Оплатить'

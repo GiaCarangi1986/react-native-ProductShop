@@ -13,12 +13,6 @@ import filter_icon from './icons/filter_icon.svg'
 import add_to_basket_icon from './icons/add_to_basket_icon.svg'
 
 import shop_image from './images/shop_image.png'
-import caterogy_milk_image from './images/caterogy_milk_image.jpg'
-import category_vegetables_image from './images/category_vegetables_image.jpg'
-import category_wine_image from './images/category_wine_image.jpg'
-import category_fructs_image from './images/category_fructs_image.jpg'
-import category_bread_image from './images/category_bread_image.jpg'
-import category_meat_image from './images/category_meat_image.jpg'
 
 export {
   pay_icon,
@@ -36,10 +30,4 @@ export {
   add_to_basket_icon,
 
   shop_image,
-  caterogy_milk_image,
-  category_vegetables_image,
-  category_wine_image,
-  category_fructs_image,
-  category_bread_image,
-  category_meat_image,
 }
