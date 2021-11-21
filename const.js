@@ -76,3 +76,8 @@ export const STATUSES = {
   succsess: 'succsess',
   error: 'error',
 }
+
+export const ORIENTATIONS = {
+  portrait: 'portrait',
+  landscape: 'landscape',
+}

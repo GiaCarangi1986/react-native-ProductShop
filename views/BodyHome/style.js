@@ -4,7 +4,7 @@ import styles from "../../styles"
 export default StyleSheet.create({
   container: {
     backgroundColor: styles.greenBackground,
-    height: '57.5%',
+    height: '80%',
     borderRadius: 15,
     display: "flex",
     justifyContent: 'center',
@@ -13,6 +13,10 @@ export default StyleSheet.create({
     marginTop: 10,
     marginBottom: 10,
     gap: 10,
+  },
+  container_landscape: {
+    width: '83%',
+    height: '95%',
   },
   title: {
     color: styles.white,

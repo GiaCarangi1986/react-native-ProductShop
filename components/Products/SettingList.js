@@ -1,16 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { useFormik } from "formik";
 import { Input, Button } from "react-native-elements";
+import { Keyboard } from 'react-native';
 import Wrapper from "../../views/Wrappers";
 import { SEARCH } from "../../const";
 import Icon from '../../views/Icon'
 import { search_icon, search_delete_icon, filter_icon } from "../../assets";
 import style from "./style";
 
-const SettingList = ({ getOrderingProducts = () => { }, getSearchProducts = () => { }, orderText = '', orderIcon = '', changeOrder = () => { } }) => {
+const SettingList = ({ getSearchProducts = () => { }, orderText = '', orderIcon = '', changeOrder = () => { } }) => {
   const onSubmit = (data) => {
     getSearchProducts(formik.values.search)
+    keyAction()
     console.log(`data`, data)
+    Keyboard.dismiss()
   }
 
   const handleChange = (e) => {
@@ -25,6 +28,20 @@ const SettingList = ({ getOrderingProducts = () => { }, getSearchProducts = () =
     initialValues: {},
     onSubmit
   })
+
+  useEffect(() => {
+    const showSubscription = Keyboard.addListener("keyboardDidShow", () => {
+      // setKeyboardStatus("Keyboard Shown");
+    });
+    const hideSubscription = Keyboard.addListener("keyboardDidHide", () => {
+      // setKeyboardStatus("Keyboard Hidden");
+    });
+
+    return () => {
+      showSubscription.remove();
+      hideSubscription.remove();
+    };
+  }, []);
 
   return (
     <Wrapper nameOfStyle='settings_products'>

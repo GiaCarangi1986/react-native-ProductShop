@@ -132,4 +132,11 @@ export default StyleSheet.create({
     width: '100%',
     justifyContent: 'flex-end',
   },
+  'home-container': {
+    width: '100%',
+    height: '70%',
+  },
+  'home-container_landscape': {
+    flexDirection: 'row',
+  }
 });

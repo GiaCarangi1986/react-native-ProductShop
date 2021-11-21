@@ -31,5 +31,9 @@ export default StyleSheet.create({
     display: 'flex',
     justifyContent: 'space-around',
     height: '100%',
+  },
+  container_btns_landscape: {
+    flexDirection: 'row',
+    alignItems: 'center',
   }
 });

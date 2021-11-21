@@ -9,7 +9,6 @@ const ProductItem = ({ title = '', cost = 0, unit = 'р', formik = {}, topRadius
     const obj = formik.values[id]
     obj.id = e
     formik.setFieldValue([id], obj)
-    updateProduct(id, 1)
   }
 
   const handleChangeCountPlus = () => {
