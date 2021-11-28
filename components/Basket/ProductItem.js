@@ -4,7 +4,9 @@ import { Button } from 'react-native-elements';
 import Wrapper from "../../views/Wrappers";
 import style from "./style";
 
-const ProductItem = ({ title = '', cost = 0, unit = 'р', formik = {}, topRadius = null, bottomRadius = null, id = -1, updateProduct = () => { } }) => {
+const ProductItem = ({ title = '', cost = 0, unit = 'р', formik = {}, topRadius = null, bottomRadius = null, id = -1,
+  updateProduct = () => { }, max = 1 }) => {
+
   const handleChangeCost = (e) => {
     const obj = formik.values[id]
     obj.id = e
@@ -46,7 +48,7 @@ const ProductItem = ({ title = '', cost = 0, unit = 'р', formik = {}, topRadius
         <Text style={style.product_detail}>{formik.values[id]?.count}</Text>
         <Wrapper nameOfStyle='change-count'>
           <Button title='-' buttonStyle={style.btn} titleStyle={style.btn_text} type="outline" onPress={handleChangeCountMinus} disabled={formik.values[id]?.count === 1} />
-          <Button title='+' buttonStyle={style.btn} titleStyle={style.btn_text} type="outline" onPress={handleChangeCountPlus} />
+          <Button title='+' buttonStyle={style.btn} titleStyle={style.btn_text} type="outline" onPress={handleChangeCountPlus} disabled={formik.values[id]?.count >= max} />
         </Wrapper>
       </Wrapper>
     </Wrapper>

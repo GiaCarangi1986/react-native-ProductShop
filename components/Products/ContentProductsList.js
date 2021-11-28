@@ -104,6 +104,7 @@ const ContentProductsList = ({ paramsFromCategory = {} }) => { // id катег�
                     unit={product.price.unit}
                     key={product.id}
                     id={product.id}
+                    max={product.max}
                     formik={formik}
                     no_margin={index === 0 ? true : false}
                     setModalVisible={setModalVisible}

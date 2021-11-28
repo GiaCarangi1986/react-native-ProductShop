@@ -7,7 +7,7 @@ import Icon from '../../views/Icon'
 import style from "./style";
 
 const ProductItem = ({ title = '', cost = 0, unit = 'р', formik = {}, id = -1, no_margin = null, setModalVisible = () => { },
-  addToBasket = () => { } }) => {
+  addToBasket = () => { }, max = 1 }) => {
 
   const handleChangeCountPlus = () => {
     const obj = formik.values[id]
@@ -50,7 +50,7 @@ const ProductItem = ({ title = '', cost = 0, unit = 'р', formik = {}, id = -1, 
         <Text style={style.product_detail}>{formik.values[id]?.count}</Text>
         <Wrapper nameOfStyle='change-count'>
           <Button title='-' buttonStyle={style.btn} titleStyle={style.btn_text} type="outline" onPress={handleChangeCountMinus} disabled={formik.values[id]?.count === 1} />
-          <Button title='+' buttonStyle={style.btn} titleStyle={style.btn_text} type="outline" onPress={handleChangeCountPlus} />
+          <Button title='+' buttonStyle={style.btn} titleStyle={style.btn_text} type="outline" onPress={handleChangeCountPlus} disabled={formik.values[id]?.count === max} />
         </Wrapper>
       </Wrapper>
     </Wrapper>
