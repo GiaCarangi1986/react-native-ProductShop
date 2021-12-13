@@ -11,6 +11,30 @@ import Modal from "../../views/Modal";
 import { get_products_in_basket, update_product_in_basket, delete_product_in_basket } from "../../api";
 import style from "./style";
 
+const initFun = (
+  statusLoad = '',
+  statusSucc = '',
+  statusErr = '',
+  setStatus = () => { },
+  get_products_in_basket = () => { },
+  setItems = () => { },
+  initValues = () => { },
+  formik = {}
+) => {
+  setStatus(statusLoad)
+  get_products_in_basket()
+    .then((items) => {
+      setItems(items)
+      formik.setValues(initValues(items))
+      setStatus(statusSucc)
+      return 'success'
+    })
+    .catch((err) => {
+      setStatus(statusErr)
+      return 'error'
+    })
+}
+
 const ProductsInBasket = () => {
   const [curPrice, setCurPrice] = useState(0)
   const [isAllChecked, setAllCheck] = useState(false)
@@ -67,7 +91,7 @@ const ProductsInBasket = () => {
       }
     })
     setItems(newItems)
-    formik.setValues(initValues(newItems)).then(result => console.log(`result`, result))
+    formik.setValues(initValues(newItems))
   }
 
   const actionCancel = () => {
@@ -121,17 +145,7 @@ const ProductsInBasket = () => {
   }, [formik])
 
   useEffect(() => {
-    setStatus(STATUSES.loading)
-    get_products_in_basket()
-      .then((items) => {
-        setItems(items)
-        formik.setValues(initValues(items))
-        setStatus(STATUSES.succsess)
-      })
-      .catch((err) => {
-        console.log(`err`, err)
-        setStatus(STATUSES.error)
-      })
+    initFun(STATUSES.loading, STATUSES.succsess, STATUSES.error, setStatus, get_products_in_basket, setItems, initValues, formik)
   }, [])
 
   return (
@@ -183,3 +197,4 @@ const ProductsInBasket = () => {
 }
 
 export default ProductsInBasket
+export { initFun }
