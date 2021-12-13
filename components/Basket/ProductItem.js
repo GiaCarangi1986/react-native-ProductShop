@@ -47,8 +47,8 @@ const ProductItem = ({ title = '', cost = 0, unit = 'р', formik = {}, topRadius
       <Wrapper >
         <Text style={style.product_detail}>{formik.values[id]?.count}</Text>
         <Wrapper nameOfStyle='change-count'>
-          <Button title='-' buttonStyle={style.btn} titleStyle={style.btn_text} type="outline" onPress={handleChangeCountMinus} disabled={formik.values[id]?.count === 1} />
-          <Button title='+' buttonStyle={style.btn} titleStyle={style.btn_text} type="outline" onPress={handleChangeCountPlus} disabled={formik.values[id]?.count >= max} />
+          <Button id='minus' title='-' buttonStyle={style.btn} titleStyle={style.btn_text} type="outline" onPress={handleChangeCountMinus} disabled={formik.values[id]?.count === 1} />
+          <Button id='plus' title='+' buttonStyle={style.btn} titleStyle={style.btn_text} type="outline" onPress={handleChangeCountPlus} disabled={formik.values[id]?.count >= max} />
         </Wrapper>
       </Wrapper>
     </Wrapper>
