@@ -67,7 +67,7 @@ const ProductsInBasket = () => {
       }
     })
     setItems(newItems)
-    formik.setValues(initValues(newItems))
+    formik.setValues(initValues(newItems)).then(result => console.log(`result`, result))
   }
 
   const actionCancel = () => {
