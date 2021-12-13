@@ -6,34 +6,10 @@ import GettingResult from "../GettingResult";
 import InfoAboutStatus from '../InfoAboutStatus'
 import { ProductItem, TotalProductsInBasket } from ".";
 import { INFO_OF_STATUS, MODAL_CONSTS, STATUSES } from "../../const";
-import { initValues } from "../../utils/utils";
+import { initValues, initFun } from "../../utils/utils";
 import Modal from "../../views/Modal";
 import { get_products_in_basket, update_product_in_basket, delete_product_in_basket } from "../../api";
 import style from "./style";
-
-const initFun = (
-  statusLoad = '',
-  statusSucc = '',
-  statusErr = '',
-  setStatus = () => { },
-  get_products_in_basket = () => { },
-  setItems = () => { },
-  initValues = () => { },
-  formik = {}
-) => {
-  setStatus(statusLoad)
-  get_products_in_basket()
-    .then((items) => {
-      setItems(items)
-      formik.setValues(initValues(items))
-      setStatus(statusSucc)
-      return 'success'
-    })
-    .catch((err) => {
-      setStatus(statusErr)
-      return 'error'
-    })
-}
 
 const ProductsInBasket = () => {
   const [curPrice, setCurPrice] = useState(0)
@@ -197,4 +173,3 @@ const ProductsInBasket = () => {
 }
 
 export default ProductsInBasket
-export { initFun }
