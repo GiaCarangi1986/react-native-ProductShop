@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`регрессионный тест подтверждения удаления продукта из корзины 1`] = `ReactWrapper {}`;
